@@ -1,11 +1,10 @@
-import styles from './Input.module.css'
-
 
 function Input({type, text, name, placeholder, handleOnChange, value, multiple}){
     return (
-        <div className={styles.form_control}>
-            <label htmlFor={name}>{text}:</label>
+        <div className='d-flex flex-column mb-2'>
+            <label className='text-primary h6 ' htmlFor={name}>{text}:</label>
             <input 
+                className='p-3 rounded-3 border border-primary h6'
                 type={type} 
                 name={name} 
                 id={name}

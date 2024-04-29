@@ -1,8 +1,6 @@
-import styles from './Container.module.css'
-
 function Container({children}){
     return(
-        <main className={styles.container}>
+        <main style={{minHeight: '75vh'}}>
             {children}
         </main>
     )

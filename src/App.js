@@ -21,10 +21,19 @@ import Message from './components/layout/Message'
 import { UserProvider } from './context/UserContext';
 
 
+
+
+
+
+
+
 function App() {
+
   return (
    <Router>
     <UserProvider>
+      <Routes>   
+      </Routes>
         <Navbar/>
         <Message/>
         <Container>

@@ -23,29 +23,38 @@ function Login(){
     }
 
     return(
-        <section className={styles.form_container}>
-            <h1>Login</h1>
-            <form onSubmit={handleSubmit}>
-                <Input 
-                    text="E-mail"
-                    type="email"
-                    name="email"
-                    placeholder="Digite o seu e-mail"
-                    handleOnChange={handleOnChange}
-                />
+        
+        <section className="w-100 overflow-hidden">
+            <div className=" top-50 start-50 translate-middle position-absolute p-5 bg-white rounded-5" style={{minWidth: '30%'}}>
+                    <h1 className="text-secondary fw-bold">Login</h1>
 
-                <Input 
-                    text="Senha"
-                    type="password"
-                    name="password"
-                    placeholder="Digite o seu e-mail"
-                    handleOnChange={handleOnChange}
-                />
-                <input type="submit" value="Entrar"/>
-            </form>
-                <p>
-                    Não tem conta? <Link to="/register">Clique aqui.</Link>
-                </p>
+                    <form  onSubmit={handleSubmit}>
+                        <Input 
+                            text="E-mail"
+                            type="email"
+                            name="email"
+                            placeholder="Digite o seu e-mail"
+                            handleOnChange={handleOnChange}
+                        />
+
+                        <Input 
+                            text="Senha"
+                            type="password"
+                            name="password"
+                            placeholder="Digite a sua senha"
+                            handleOnChange={handleOnChange}
+                        />
+                        <input className="btn btn-primary w-100 rounded-5 p-2" type="submit" value="Entrar"/>
+                    </form>
+                    <p className="mt-3 fw-normal text-primary">
+                        Não tem conta? <Link to="/register" className=" text-decoration-none fw-bold text-secondary">Clique aqui.</Link>
+                    </p>
+            </div>
+            
+
+            <img className="" style={{width: '100%' }} src={`${process.env.REACT_APP_API}/images/general/fundoMiau.png`}/> 
+
+                
 
         </section>
     )

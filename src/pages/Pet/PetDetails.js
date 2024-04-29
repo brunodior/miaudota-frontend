@@ -40,14 +40,15 @@ function PetDetails(){
     return (
         <>
            {pet.name &&
-                <section className={styles.pet_details_container}>
-                    <div className={styles.pet_details}>
-                        <h1>Conhecendo o Pet: {pet.name}</h1>
-                        <p>Se tiver interesse, marque uma visita para conhecê-lo</p>
+                <section className='p-5 d-flex flex-column align-items-center'>
+                    <div className='text-center'>
+                        <h1 className='text-primary m-0'>Conhecendo {pet.name}</h1>
+                        <p className='text-light h6 fw-normal'>Se tiver interesse, marque uma visita para conhecê-lo</p>
                     </div>
-                    <div className={styles.pet_images}>
+                    <div className='mt-3'>
                         {pet.images.map((image, index) => (
                             <img 
+                                className={styles.img_pet}
                                 src={`${process.env.REACT_APP_API}/images/pets/${image}`}
                                 alt={pet.name}
                                 key={index}
@@ -56,18 +57,25 @@ function PetDetails(){
                       
                     </div>
 
-                    <p>
-                        <span className='bold'>Peso:</span> {pet.weight}kg
-                    </p>
+                    <div className="my-4">
+                                                
+                            <div className="d-flex justify-content-between">
+                                <h4 className="fw-bold text-primary m-0">
+                                    <span className="fw-normal">Idade:</span> {pet.age} anos
+                                </h4>
 
-                    <p>
-                        <span className='bold'>Idade:</span> {pet.age} anos
-                    </p>
+                                <h4 className="fw-bold text-primary m-0 ms-3">
+                                    <span className="fw-normal">Peso:</span> {pet.weight}kg
+                                </h4>
+
+
+                            </div>
+                    </div>
 
                     {token ? (
-                        <button onClick={schedule} >Solicitar uma visita</button>
+                        <button onClick={schedule} className='btn btn-secondary px-4 py-2 rounded-4'>Solicitar uma visita</button>
                     ) : (
-                        <p>Você precisa  <Link to='/register' >criar uma conta</Link> para solicitar a visita </p>
+                        <p className='text-primary'>Você precisa  <Link className='text-secondary fw-bold' to='/register' >criar uma conta</Link> para solicitar a visita </p>
                     )
 
                     }

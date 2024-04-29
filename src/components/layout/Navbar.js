@@ -1,43 +1,65 @@
 import { Link } from "react-router-dom"
 
 import styles from './Navbar.module.css'
+import { NavLink } from "react-router-dom";
 
 // context
 import { Context } from "../../context/UserContext"
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
+import api from "../../utils/api";
+
 
 function Navbar(){
+
+    const [user, setUser] = useState({})
+    const [token] = useState(localStorage.getItem('token') || '')
+
+    
+
+    useEffect(() => {
+        { token && 
+            api.get('/users/checkuser', {
+                headers: {
+                    Authorization: `Baerer ${JSON.parse(token)}`,
+                }
+            }).then((response) => {
+                setUser(response.data)
+                return
+            }).catch((err) => {
+                return err
+            })
+        }
+        
+    }, [token])
 
     const {authenticated, logout} = useContext(Context)
 
     return(
-       <nav className={styles.navbar}>
-            <div className={styles.navbar_logo}>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/7/76/Grupo_Petz.png" alt=""/>
+       <nav className='bg-primary d-flex justify-content-between align-items-center px-5 py-3'>
+            <div >
+                <img style={{height: '20px'}} src={`${process.env.REACT_APP_API}/images/users/logoMiuadota.png`} alt=""/>
             </div>
-            <ul>
-                <li>
-                    <Link to='/'>Adotar</Link>
-                </li>
+            
+
+            <ul className="nav nav-underline">
+
+                <li className="nav-item px-1 mt-1"><NavLink className='nav-link h6' to="/">Adotar</NavLink></li>
+
                 {authenticated ? 
                 (
                    <>   
-                        <li><Link to='/pet/myadoptions'>Minhas adoções</Link></li>
-                        <li><Link to='/pet/mypets'>Meus Pets</Link></li>
-                        <li><Link to='/user/profile'>Perfil</Link></li>
-                        <li onClick={logout}>Sair</li>
+                        <li className="nav-item px-1 mt-1"><NavLink className='nav-link h6' to="/pet/myadoptions">Minhas adoções</NavLink></li>
+                        <li className="nav-item px-1 mt-1"><NavLink className='nav-link h6' to="/pet/mypets">Meus pets</NavLink></li>
+                        <li className="nav-item nav-link cursor-pointer px-1 h6 mt-1" onClick={logout}>Sair</li>
+                        <li className="nav-item px-1"><Link to='/user/profile'> <img className={styles.img_user} src={`${process.env.REACT_APP_API}/images/users/${user.image}`}/>  </Link></li>
                    </> 
                 
                 ) : 
                 
                 (
                     <>
-                        <li>
-                            <Link to='/login'>Entrar</Link>
-                        </li>
-                        <li>
-                            <Link to='/register'>Cadastrar</Link>
-                        </li>
+                        <li className="nav-item px-1 mt-1"><NavLink className='nav-link h6' to="/login">Entrar</NavLink></li>
+                        <li className="nav-item px-1 mt-1"><NavLink className='nav-link h6' to="/register">Cadastrar</NavLink></li>
                     </>
                 )
 

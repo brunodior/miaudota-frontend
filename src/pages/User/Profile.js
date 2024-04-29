@@ -62,70 +62,92 @@ function Profile(){
     }
 
     return(
-        <section>
-            <div className={styles.profile_header}>
-                <h1>Perfil</h1>
-                {(user.image || preview) && (
-                    <RoundedImage 
-                            src={preview ? URL.createObjectURL(preview) : `${process.env.REACT_APP_API}/images/users/${user.image}`
-                            }
-                            alt={user.name} />
-                )}
-            </div>
+        <section className='p-5'>                
 
-            <form onSubmit={handleSubmit} className={formStyles.form_container}>
-                <Input
-                    text='Imagem'    
-                    type='file'
-                    name='image'
-                    handleOnChange={onFileChange}
-                />
+            <form onSubmit={handleSubmit} className='row'>
+                    <div className='col-md-2'>
+                        <div >
+                            {(user.image || preview) && (
+                                <RoundedImage 
+                                        src={preview ? URL.createObjectURL(preview) : `${process.env.REACT_APP_API}/images/users/${user.image}`
+                                        }
+                                        alt={user.name} />
+                            )}
+                        </div>
+                        
+                        <Input
+                            text='Imagem'    
+                            type='file'
+                            name='image'
+                            handleOnChange={onFileChange}
+                        />
+                    </div>
+                   <div className='col-md-10'>
+                   <div className='row'>
+                            <div className='col-12'>
+                                <Input
+                                    text='Nome'    
+                                    type='text'
+                                    name='name'
+                                    placeholder='Digite seu nome'
+                                    handleOnChange={handleChange}
+                                    value={user.name || ''}
+                                />
+                            </div>
+                            
+                            <div className='col-8'>
+                                <Input
+                                    text='E-mail'    
+                                    type='email'
+                                    name='email'
+                                    placeholder='Digite seu e-mail'
+                                    handleOnChange={handleChange}
+                                    value={user.email || ''}
+                                />
+                            </div>
 
-                <Input
-                    text='E-mail'    
-                    type='email'
-                    name='email'
-                    placeholder='Digite seu e-mail'
-                    handleOnChange={handleChange}
-                    value={user.email || ''}
-                />
+                            <div className='col-4'>
+                                    <Input
+                                        text='Telefone'    
+                                        type='text'
+                                        name='phone'
+                                        placeholder='Digite seu telefone'
+                                        handleOnChange={handleChange}
+                                        value={user.phone || ''}
+                                    />
+                            </div>
+                        
+                            <div className='col-6'>
+                                <Input
+                                    text='Senha'    
+                                    type='password'
+                                    name='password'
+                                    placeholder='Digite a sua senha'
+                                    handleOnChange={handleChange}
+                                />
+                            </div>
+                            <div className='col-6'>
+                                <Input
+                                    text='Confirmação de senha'    
+                                    type='password'
+                                    name='confirmpassword'
+                                    placeholder='Confirme a sua senha'
+                                    handleOnChange={handleChange}
+                                />
+                            </div>
 
-                <Input
-                    text='Nome'    
-                    type='text'
-                    name='name'
-                    placeholder='Digite seu nome'
-                    handleOnChange={handleChange}
-                    value={user.name || ''}
-                />
+                            <div className='col-12'>
+                                <input className='btn btn-primary rounded-4 py-3 w-100' type='submit' value='Salvar'/>
+                            </div>
+                   </div>
+                   </div>
+                   
 
-                <Input
-                    text='Telefone'    
-                    type='text'
-                    name='phone'
-                    placeholder='Digite seu telefone'
-                    handleOnChange={handleChange}
-                    value={user.phone || ''}
-                />
-
-                <Input
-                    text='Senha'    
-                    type='password'
-                    name='password'
-                    placeholder='Digite a sua senha'
-                    handleOnChange={handleChange}
-                />
-
-                 <Input
-                    text='Confirmação de senha'    
-                    type='password'
-                    name='confirmpassword'
-                    placeholder='Confirme a sua senha'
-                    handleOnChange={handleChange}
-                />
-                <input type='submit' value='Salvar'/>
+                   
+                    
 
             </form>
+                   
         </section>
     )
 }

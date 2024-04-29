@@ -33,19 +33,19 @@ function PetForm({handleSubmit, petData, btnText}){
     }
 
     return(
-       <form onSubmit={submit} className={formStyles.form_container}>
+       <form onSubmit={submit} className="row w-50">
             
-            <div className={formStyles.preview_pet_images}>
+            <div className="mb-3 d-flex justify-content-center" >
                 {preview.length > 0 
                 ? preview.map((image, index) =>  
-                    <img src={URL.createObjectURL(image)} alt={pet.name} key={`${pet.name}+${index}`} />
+                    <img className={formStyles.img_pet} src={URL.createObjectURL(image)} alt={pet.name} key={`${pet.name}+${index}`} />
                 ) 
                 : pet.images && pet.images.map((image, index) => 
-                <img src={`${process.env.REACT_APP_API}/images/pets/${image}`} alt={pet.name} key={`${pet.name}+${index}`} />
+                <img className={formStyles.img_pet} src={`${process.env.REACT_APP_API}/images/pets/${image}`} alt={pet.name} key={`${pet.name}+${index}`} />
 
                 )}
             </div>
-
+            
             <Input
                 text="Imagens do Pet"
                 type="file"
@@ -62,16 +62,18 @@ function PetForm({handleSubmit, petData, btnText}){
                 handleOnChange={handleChange}
                 value={pet.name || ''}    
             />      
+            <div className="col-6">
+                <Input
+                    text="Idade do Pet"
+                    type="text"
+                    name="age"
+                    placeholder="Digite a idade"
+                    handleOnChange={handleChange}
+                    value={pet.age || ''}    
+                />  
+            </div>
 
-            <Input
-                text="Idade do Pet"
-                type="text"
-                name="age"
-                placeholder="Digite a idade"
-                handleOnChange={handleChange}
-                value={pet.age || ''}    
-            />      
-
+            <div className="col-6">
             <Input
                 text="Peso do Pet"
                 type="number"
@@ -79,7 +81,11 @@ function PetForm({handleSubmit, petData, btnText}){
                 placeholder="Digite o peso"
                 handleOnChange={handleChange}
                 value={pet.weight || ''}    
-            />      
+            />  
+            </div>
+               
+
+                
 
             <Select 
                 name="color"
@@ -88,7 +94,9 @@ function PetForm({handleSubmit, petData, btnText}){
                 handleOnChange={handleColor}
                 value={pet.color || ''}
             />
-            <input type="submit" value={btnText} />
+            <div className="col-12">
+                <input className="btn btn-primary py-3 rounded-4 w-100 mt-2" type="submit" value={btnText} />
+            </div>
 
        </form>
     )

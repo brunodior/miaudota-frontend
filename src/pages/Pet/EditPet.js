@@ -56,14 +56,20 @@ function EditPet(){
     }
 
     return(
-        <section>
-            <div className={styles.addpet_header}>
-                <h1>Editando o Pet: {pet.name}</h1>
-                <p>Depois da edição os dados serão autualizados</p>
+        <section className="p-5">
+            <div className='d-flex flex-column align-items-center'>
+                    <div className="mb-3 text-center">
+                            <h1 className="m-0 text-primary fw-bold">Editando {pet.name}</h1>
+                            <p className="text-light m-0">Depois da edição os dados serão autualizados</p>
+                    </div>
+
+                    {pet.name && (
+                        <PetForm handleSubmit={updatePet} btnText="Atualizar" petData={pet}/>
+                    )}
+
             </div>
-            {pet.name && (
-                <PetForm handleSubmit={updatePet} btnText="Atualizar" petData={pet}/>
-            )}
+
+            
         </section>
     )
 }

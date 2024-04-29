@@ -19,23 +19,42 @@ function Home(){
     }, [])
 
     return(
-        <section>
-            <div className={styles.pet_home_header}>
-                <h1>Adote um Pet</h1>
-                <p>Veja os detalhes de cada um e conheça o tutor deles.</p>
+        <section className="p-5">
+            <div className="mb-5">
+                <h1 className="m-0 text-primary fw-bold">Adote um pet</h1>
+                <p className="text-light">Veja os detalhes de cada um e conheça o tutor deles.</p>
             </div>
-            <div className={styles.pet_container}>
+            <div className='row g-4'>
                 {pets.length > 0 && (
                     pets.map((pet) => (
-                        <div className={styles.pet_card}>
-                            <div style={{backgroundImage: `url(${process.env.REACT_APP_API}/images/pets/${pet.images[0]})`}} className={styles.pet_card_image}> </div>
-                            <h3>{pet.name}</h3>
-                            <p>
-                                <span className="bold">Peso:</span> {pet.weight}kg
-                            </p>
+                        <div className="col-3 align-self-stretch">
+                            <div className="border border-2 rounded-4  overflow-hidden h-100">
+                                    <div style={{backgroundImage: `url(${process.env.REACT_APP_API}/images/pets/${pet.images[0]})`}} className={styles.pet_card_image}> </div>
 
-                            {pet.avaliable ? (<Link to={`pet/${pet._id}`}>Mais detalhes</Link> ) : <p className={styles.adopted_text} >Adotado</p> }
+                                    <div className="p-3">
+                                        <h4 className="m-0 text-primary fw-bold">{pet.name}</h4>
+                                        <div className="d-flex justify-content-between mb-3">
+                                            <p className="fw-bold mb-3 text-primary">
+                                                <span className="fw-normal">Idade:</span> {pet.age} anos
+                                            </p>
 
+                                            <p className="fw-bold mb-3 text-primary">
+                                                <span className="fw-normal">Peso:</span> {pet.weight}kg
+                                            </p>
+
+
+                                        </div>
+                                       
+
+                                        {pet.avaliable ? 
+                                            (<Link className="btn btn-primary text-white rounded-4 w-100 h6 py-2 m-0" to={`pet/${pet._id}`}>Mais detalhes</Link> ) 
+                                            
+                                            : <p className='w-100 border border-secondary text-center text-secondary rounded-4 py-2 m-0 h6' >Adotado</p> }
+                                    </div>
+
+                                   
+
+                            </div>
                         </div>
                     ))
                    

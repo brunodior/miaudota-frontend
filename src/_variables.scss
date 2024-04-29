@@ -1,0 +1,32 @@
+
+$theme-colors: (
+  "primary": #371957,
+  "secondary": #a1a2d6,
+  "info": #17A2B8,
+  "success": #00bf00,
+  "warning": #d9a300,
+  "danger": #DC3545,
+  "dark": #343A40,
+  "light": #b3b3b3,
+  "white": #ffffff,
+);
+.nav-link {
+  color: #F8F9FA !important;
+}
+
+.nav-link.active {
+  color: #a1a2d6 !important;
+}
+a.active {
+  color: #a1a2d6 !important;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #a1a2d6;
+}
+h6 {
+  font-size: 0.825em !important;
+}
+
+
+.cursor-pointer {
+  cursor: pointer;
+}
