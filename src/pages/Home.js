@@ -10,10 +10,12 @@ function Home(){
     const [pets, setPets] = useState([])
 
     useEffect(() => {
-
+        
         api.get('/pets').then((response) => {
             setPets(response.data.pets)
             
+        }).catch((error) => {
+            console.log(error)
         })
 
     }, [])
