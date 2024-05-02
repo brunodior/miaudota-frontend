@@ -29,7 +29,7 @@ function Home(){
             <div className='row g-4'>
                 {pets.length > 0 && (
                     pets.map((pet) => (
-                        <div className="col-6 col-md-3 align-self-stretch">
+                        <div className="col-12 col-md-3 align-self-stretch">
                             <div className="border border-2 rounded-4  overflow-hidden h-100">
                                     <div style={{backgroundImage: `url(${process.env.REACT_APP_API}/images/pets/${pet.images[0]})`}} className={styles.pet_card_image}> </div>
 

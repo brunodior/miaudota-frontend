@@ -24,8 +24,8 @@ function Login(){
 
     return(
         
-        <section className="w-100 overflow-hidden">
-            <div className=" top-50 start-50 translate-middle position-absolute p-4 p-md-5 bg-white rounded-5" style={{minWidth: '50%'}}>
+        <section className="w-100 overflow-hidden position-relative">
+            <div className=" start-50 top-50 translate-middle position-absolute p-4 p-md-5 bg-white rounded-5" style={{minWidth: '50%'}}>
                     <h1 className="text-secondary fw-bold">Login</h1>
 
                     <form  onSubmit={handleSubmit}>
