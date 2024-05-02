@@ -25,7 +25,7 @@ function Login(){
     return(
         
         <section className="w-100 overflow-hidden">
-            <div className=" top-50 start-50 translate-middle position-absolute p-5 bg-white rounded-5" style={{minWidth: '30%'}}>
+            <div className=" top-50 start-50 translate-middle position-absolute p-4 p-md-5 bg-white rounded-5" style={{minWidth: '50%'}}>
                     <h1 className="text-secondary fw-bold">Login</h1>
 
                     <form  onSubmit={handleSubmit}>
@@ -52,7 +52,7 @@ function Login(){
             </div>
             
 
-            <img className="" style={{width: '100%' }} src={`${process.env.REACT_APP_API}/images/general/fundoMiau.png`}/> 
+            <img className="" style={{width: '100%', height: '90vh', objectFit: 'cover' }} src={`${process.env.REACT_APP_API}/images/general/fundoMiau.png`}/> 
 
                 
 

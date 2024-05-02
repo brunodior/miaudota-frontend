@@ -40,7 +40,7 @@ function PetDetails(){
     return (
         <>
            {pet.name &&
-                <section className='p-5 d-flex flex-column align-items-center'>
+                <section className='p-4 p-md-5 d-flex flex-column align-items-center'>
                     <div className='text-center'>
                         <h1 className='text-primary m-0'>Conhecendo {pet.name}</h1>
                         <p className='text-light h6 fw-normal'>Se tiver interesse, marque uma visita para conhecê-lo</p>
@@ -75,7 +75,7 @@ function PetDetails(){
                     {token ? (
                         <button onClick={schedule} className='btn btn-secondary px-4 py-2 rounded-4'>Solicitar uma visita</button>
                     ) : (
-                        <p className='text-primary'>Você precisa  <Link className='text-secondary fw-bold' to='/register' >criar uma conta</Link> para solicitar a visita </p>
+                        <p className='text-primary text-center'>Você precisa  <Link className='text-secondary fw-bold' to='/register' >criar uma conta</Link> para solicitar a visita </p>
                     )
 
                     }

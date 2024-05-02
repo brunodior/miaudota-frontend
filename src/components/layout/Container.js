@@ -1,6 +1,6 @@
 function Container({children}){
     return(
-        <main style={{minHeight: '75vh'}}>
+        <main>
             {children}
         </main>
     )

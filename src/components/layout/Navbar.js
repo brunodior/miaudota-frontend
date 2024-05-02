@@ -35,7 +35,7 @@ function Navbar(){
     const {authenticated, logout} = useContext(Context)
 
     return(
-       <nav className='bg-primary d-flex justify-content-between align-items-center px-5 py-3'>
+       <nav className='bg-primary d-flex justify-content-between align-items-center px-4 px-md-5 py-3'>
             <div >
                 <img style={{height: '20px'}} src={`${process.env.REACT_APP_API}/images/users/logoMiuadota.png`} alt=""/>
             </div>

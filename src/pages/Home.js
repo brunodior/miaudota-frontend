@@ -21,7 +21,7 @@ function Home(){
     }, [])
 
     return(
-        <section className="p-5">
+        <section className="p-4 p-md-5">
             <div className="mb-5">
                 <h1 className="m-0 text-primary fw-bold">Adote um pet</h1>
                 <p className="text-light">Veja os detalhes de cada um e conheça o tutor deles.</p>
@@ -29,7 +29,7 @@ function Home(){
             <div className='row g-4'>
                 {pets.length > 0 && (
                     pets.map((pet) => (
-                        <div className="col-3 align-self-stretch">
+                        <div className="col-6 col-md-3 align-self-stretch">
                             <div className="border border-2 rounded-4  overflow-hidden h-100">
                                     <div style={{backgroundImage: `url(${process.env.REACT_APP_API}/images/pets/${pet.images[0]})`}} className={styles.pet_card_image}> </div>
 

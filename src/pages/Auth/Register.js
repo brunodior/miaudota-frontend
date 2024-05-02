@@ -24,8 +24,8 @@ function Register(){
 
 
 
-<section className="w-100 overflow-hidden">
-<div className=" top-50 start-50 translate-middle position-absolute p-5 bg-white rounded-5" style={{minWidth: '20%'}}>
+<section className="w-100 h-100 overflow-hidden bg-dark">
+<div className=" top-50 start-50 translate-middle position-absolute p-4 p-md-5 bg-white rounded-5" style={{minWidth: '40%'}}>
         <h1 className="text-secondary fw-bold">Cadastre-se</h1>
 
         <form className="row" onSubmit={handleSubmit}>
@@ -82,7 +82,7 @@ function Register(){
 
                 <div className="col-12">
                     <input className="btn btn-primary w-100 rounded-5 p-2" type="submit" value="Cadastrar"/>
-                    <p className="mt-2 fw-normal text-primary">
+                    <p className="m-0 mt-2 fw-normal text-primary">
                         Já tem conta? <Link to="/login" className=" text-decoration-none fw-bold text-secondary">Clique aqui.</Link>
                     </p>
                 </div>
@@ -99,7 +99,7 @@ function Register(){
 </div>
 
 
-<img className="" style={{width: '100%' }} src={`${process.env.REACT_APP_API}/images/general/fundoMiau.png`}/> 
+<img className="" style={{width: '100%', height: '90vh', objectFit: 'cover'  }} src={`${process.env.REACT_APP_API}/images/general/fundoMiau.png`}/> 
 
     
 
