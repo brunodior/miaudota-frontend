@@ -47,6 +47,19 @@ function Navbar(){
                 <IonContent className="ion-padding">
 
                 <ul className="nav nav-underline d-block">
+                            
+                            {authenticated && 
+                                
+                                
+                                <li className="nav-item px-1 my-3">
+                                    <Link to='/user/profile' className="btn btn-secondary d-flex rounded-5 align-items-center"> 
+                                        
+                                        <img className={styles.img_user} src={`${process.env.REACT_APP_API}/images/users/${user.image}`}/>  
+                                        <h5 className="m-0 ms-2">{user.name}</h5>
+                                    </Link>
+                                </li>
+
+                            }
 
                             <li className="nav-item px-1 mt-1"><NavLink className='nav-link h6' to="/">Adotar</NavLink></li>
 
@@ -55,8 +68,7 @@ function Navbar(){
                             <>   
                                     <li className="nav-item px-1 mt-1"><NavLink className='nav-link h6' to="/pet/myadoptions">Minhas adoções</NavLink></li>
                                     <li className="nav-item px-1 mt-1"><NavLink className='nav-link h6' to="/pet/mypets">Meus pets</NavLink></li>
-                                    <li className="nav-item nav-link cursor-pointer px-1 h6 mt-1" onClick={logout}>Sair</li>
-                                    <li className="nav-item px-1"><Link to='/user/profile'> <img className={styles.img_user} src={`${process.env.REACT_APP_API}/images/users/${user.image}`}/>  </Link></li>
+                                    <li className="nav-item nav-link cursor-pointer px-1 h6 mt-1 d-flex align-items-center" onClick={logout}> <i className="material-icons d-flex fs-5 me-2">logout</i> Sair</li>
                             </> 
 
                             ) : 
@@ -92,7 +104,7 @@ function Navbar(){
                    <>   
                         <li className="nav-item px-1 mt-1"><NavLink className='nav-link h6' to="/pet/myadoptions">Minhas adoções</NavLink></li>
                         <li className="nav-item px-1 mt-1"><NavLink className='nav-link h6' to="/pet/mypets">Meus pets</NavLink></li>
-                        <li className="nav-item nav-link cursor-pointer px-1 h6 mt-1" onClick={logout}>Sair</li>
+                        <li className="nav-item nav-link cursor-pointer px-1 h6 mt-1 d-flex align-items-center" onClick={logout}> <i className="material-icons d-flex fs-5 me-2">logout</i> Sair</li>
                         <li className="nav-item px-1"><Link to='/user/profile'> <img className={styles.img_user} src={`${process.env.REACT_APP_API}/images/users/${user.image}`}/>  </Link></li>
                    </> 
                 

@@ -21,7 +21,7 @@ function Home(){
     }, [])
 
     return(
-        <section className="p-4 p-md-5">
+        <section className="p-4 p-md-5" style={{minHeight: '70vh'}}>
             <div className="mb-5">
                 <h1 className="m-0 text-primary fw-bold">Adote um pet</h1>
                 <p className="text-light">Veja os detalhes de cada um e conheça o tutor deles.</p>

@@ -23,7 +23,7 @@ function MyAdoptions(){
     }, [token])
 
     return (
-        <section className='p-5'>
+        <section className='p-4 p-md-5' style={{minHeight: '70vh'}}>
 
             <div className="mb-5">
                 <h1 className="m-0 text-primary fw-bold">Minhas Adoções</h1>
@@ -76,7 +76,7 @@ function MyAdoptions(){
                         <i class="material-icons-outlined d-flex text-light" style={{fontSize: '100px'}}>
                             sentiment_dissatisfied
                         </i>
-                        <h5 className='text-light m-0 mt-2 fw-normal'>Ainda não há adoções de Pets.</h5>
+                        <h5 className='text-light m-0 mt-2 fw-normal text-center'>Ainda não há adoções de Pets.</h5>
                         
                     </div>
 

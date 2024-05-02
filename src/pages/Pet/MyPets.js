@@ -61,10 +61,11 @@ function MyPets(){
     }
 
     return(
-        <section className="p-5" >
-            <div className="mb-5 d-flex justify-content-between align-items-center">
+        <section className="p-4 p-md-5" style={{minHeight: '70vh'}} >
+            <div className="mb-5 d-block d-md-flex justify-content-between align-items-center">
                 <h1 className="m-0 text-primary fw-bold">Meus pets</h1>
-                <Link className="btn btn-primary px-5 rounded-4" to="/pet/add">Cadastrar Pet</Link>
+                <Link className="btn btn-primary px-5 rounded-4 d-none d-md-block" to="/pet/add">Cadastrar Pet</Link>
+                <Link className="btn btn-primary px-5 rounded-4 mt-3 w-100 d-block d-md-none" to="/pet/add">Cadastrar Pet</Link>
 
             </div>
 

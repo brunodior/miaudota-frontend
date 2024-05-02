@@ -40,7 +40,7 @@ function PetDetails(){
     return (
         <>
            {pet.name &&
-                <section className='p-4 p-md-5 d-flex flex-column align-items-center'>
+                <section className='p-4 p-md-5 d-flex flex-column align-items-center' style={{minHeight: '70vh'}}>
                     <div className='text-center'>
                         <h1 className='text-primary m-0'>Conhecendo {pet.name}</h1>
                         <p className='text-light h6 fw-normal'>Se tiver interesse, marque uma visita para conhecê-lo</p>
