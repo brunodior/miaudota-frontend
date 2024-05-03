@@ -9,6 +9,7 @@ import { useContext, useEffect, useState } from "react"
 import api from "../../utils/api";
 import { IonButtons, IonContent, IonHeader, IonMenu, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 
+import logo from '../../assets/img/logoMiuadota.png'
 
 function Navbar(){
 
@@ -38,7 +39,7 @@ function Navbar(){
     return(
        <nav className='bg-primary d-flex justify-content-between align-items-center px-4 px-md-5 py-3'>
             <div >
-                <img style={{height: '20px'}} src={`${process.env.REACT_APP_API}/images/users/logoMiuadota.png`} alt=""/>
+                <img style={{height: '20px'}} src={logo} alt="Minha Imagem" />
             </div>
                     
           

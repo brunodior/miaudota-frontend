@@ -84,13 +84,13 @@ function MyPets(){
                                                     width="px75"
                                                 />
                                             <div className="ms-3">
-                                                <h4 className="m-0 text-primary fw-bold">{pet.name}</h4>
+                                                <h4 className="m-0 text-primary fw-bold mb-2">{pet.name}</h4>
                                                 <div className="d-flex justify-content-between">
-                                                    <p className="fw-bold text-primary m-0">
+                                                    <p className="fw-bold text-primary m-0 lh-1">
                                                         <span className="fw-normal">Idade:</span> {pet.age} anos
                                                     </p>
 
-                                                    <p className="fw-bold text-primary m-0 ms-3">
+                                                    <p className="fw-bold text-primary m-0 ms-3 lh-1">
                                                         <span className="fw-normal">Peso:</span> {pet.weight}kg
                                                     </p>
 
@@ -102,15 +102,15 @@ function MyPets(){
                                         </div>
 
                                         
-                                        <div>
+                                        <div className="d-flex flex-column flex-md-row">
                                             {pet.avaliable 
                                                 ? (<> 
                                                     {pet.adopter && 
-                                                        ( <button className="btn btn-success h6 rounded-4 m-0 px-4 me-2 py-2 text-white" onClick={() => {concludeAdoption(pet._id)}} >Concluir adoção</button>)}
-                                                        <Link className="p-1 btn btn-outline-primary rounded-4 me-2" to={`/pet/edit/${pet._id}`}>
+                                                        ( <button className="btn btn-success h6 rounded-4 m-0 px-4 me-md-2 py-2 text-white" onClick={() => {concludeAdoption(pet._id)}} >Concluir adoção</button>)}
+                                                        <Link className="p-1 btn btn-outline-primary rounded-4 me-md-2" to={`/pet/edit/${pet._id}`}>
                                                             <i class="material-icons d-flex">edit</i>
                                                         </Link>
-                                                        <button className="p-1 btn btn-outline-danger rounded-4" onClick={() => { removePet(pet._id)}}>
+                                                        <button className="p-1 btn btn-outline-danger rounded-4 mt-1 mt-md-0" onClick={() => { removePet(pet._id)}}>
                                                                 <i class="material-icons d-flex">delete</i>
                                                         </button>
                                                         </>  )

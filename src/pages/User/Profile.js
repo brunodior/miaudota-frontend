@@ -1,5 +1,3 @@
-import styles from './Profile.module.css'
-import formStyles from '../../components/form/Form.module.css'
 
 import api from '../../utils/api'
 
@@ -62,11 +60,11 @@ function Profile(){
     }
 
     return(
-        <section className='p-5'>                
+        <section className='p-4 p-md-5'>                
 
             <form onSubmit={handleSubmit} className='row'>
                     <div className='col-md-2'>
-                        <div >
+                        <div className='d-flex justify-content-center' >
                             {(user.image || preview) && (
                                 <RoundedImage 
                                         src={preview ? URL.createObjectURL(preview) : `${process.env.REACT_APP_API}/images/users/${user.image}`
@@ -95,7 +93,7 @@ function Profile(){
                                 />
                             </div>
                             
-                            <div className='col-8'>
+                            <div className='col-12 col-md-8'>
                                 <Input
                                     text='E-mail'    
                                     type='email'
@@ -106,7 +104,7 @@ function Profile(){
                                 />
                             </div>
 
-                            <div className='col-4'>
+                            <div className='col-12 col-md-4'>
                                     <Input
                                         text='Telefone'    
                                         type='text'

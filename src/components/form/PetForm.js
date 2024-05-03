@@ -33,7 +33,7 @@ function PetForm({handleSubmit, petData, btnText}){
     }
 
     return(
-       <form onSubmit={submit} className="row w-50">
+       <form onSubmit={submit} className="row w-100">
             
             <div className="mb-3 d-flex justify-content-center" >
                 {preview.length > 0 
@@ -46,6 +46,7 @@ function PetForm({handleSubmit, petData, btnText}){
                 )}
             </div>
             
+
             <Input
                 text="Imagens do Pet"
                 type="file"

@@ -6,6 +6,9 @@ import { useContext, useState } from "react"
 // CONTEXT
 import { Context } from "../../context/UserContext"
 
+import background from '../../assets/img/fundoMiau.png'
+
+
 function Register(){
 
     const [user, setUser] = useState({})
@@ -30,7 +33,7 @@ function Register(){
 
                 <form className="row" onSubmit={handleSubmit}>
 
-                        <div className="col-6">
+                        <div className="col-12 col-md-6">
                             <Input 
                                     text="Nome"
                                     type="text"
@@ -39,7 +42,7 @@ function Register(){
                                     handleOnChange={handleChange} 
                                 />
                         </div>
-                        <div className="col-6">
+                        <div className="col-12 col-md-6">
                             <Input 
                                     
                                     text="Telefone"
@@ -60,7 +63,7 @@ function Register(){
                 
                         </div>
                             
-                        <div className="col-6">
+                        <div className="col-12 col-md-6">
                         <Input 
                             text="Senha"
                             type="password"
@@ -70,7 +73,7 @@ function Register(){
                         />   
                         </div>
                         
-                        <div className="col-6">
+                        <div className="col-12 col-md-6">
                         <Input 
                             text="Confirme a senha"
                             type="password"
@@ -99,7 +102,7 @@ function Register(){
         </div>
 
 
-        <img style={{width: '100%', height: '90vh', objectFit: 'cover'  }} src={`${process.env.REACT_APP_API}/images/general/fundoMiau.png`}/> 
+        <img style={{width: '100%', height: '90vh', objectFit: 'cover'  }} src={background}/> 
 
     
 

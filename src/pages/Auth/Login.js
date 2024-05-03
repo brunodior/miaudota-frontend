@@ -7,6 +7,8 @@ import styles from '../../components/form/Form.module.css'
 import { Context } from "../../context/UserContext"
 import { Link } from "react-router-dom"
 
+import background from '../../assets/img/fundoMiau.png'
+
 function Login(){
 
     const [user, setUser] = useState({})
@@ -52,7 +54,7 @@ function Login(){
             </div>
             
 
-            <img className="" style={{width: '100%', height: '90vh', objectFit: 'cover' }} src={`${process.env.REACT_APP_API}/images/general/fundoMiau.png`}/> 
+            <img className="" style={{width: '100%', height: '90vh', objectFit: 'cover' }} src={background}/> 
 
                 
 

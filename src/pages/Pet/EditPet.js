@@ -56,7 +56,7 @@ function EditPet(){
     }
 
     return(
-        <section className="p-5">
+        <section className="p-4 p-md-5">
             <div className='d-flex flex-column align-items-center'>
                     <div className="mb-3 text-center">
                             <h1 className="m-0 text-primary fw-bold">Editando {pet.name}</h1>
@@ -64,6 +64,7 @@ function EditPet(){
                     </div>
 
                     {pet.name && (
+                        
                         <PetForm handleSubmit={updatePet} btnText="Atualizar" petData={pet}/>
                     )}
 
