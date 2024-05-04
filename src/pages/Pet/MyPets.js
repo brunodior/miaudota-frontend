@@ -136,14 +136,18 @@ function MyPets(){
                 }
                 {pets.length === 0 && 
 
-                    (
-                            <div className='w-100 h-100 bg-light bg-opacity-25 p-4 rounded-4 d-flex flex-column align-items-center'>
-                                <i class="material-icons-outlined d-flex text-light" style={{fontSize: '100px'}}>
-                                    sentiment_dissatisfied
-                                </i>
-                                <h5 className='text-light m-0 mt-2 fw-normal'>Não há pets cadastrados</h5>
-                                
+                    (       
+                            <div className="col-12">
+                                <div className=' bg-light bg-opacity-25 p-4 rounded-4 d-flex flex-column align-items-center'>
+                                    
+                                    <i class="material-icons-outlined d-flex text-light" style={{fontSize: '100px'}}>
+                                        sentiment_dissatisfied
+                                    </i>
+                                    <h5 className='text-light m-0 mt-2 fw-normal text-center'>Não há pets cadastrados</h5>
+                                    
+                                </div>
                             </div>
+                            
 
                     )
 
