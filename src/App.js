@@ -19,6 +19,7 @@ import Message from './components/layout/Message'
 
 // CONTEXT
 import { UserProvider } from './context/UserContext';
+import Loading from './components/layout/Loading';
 
 
 
@@ -34,6 +35,7 @@ function App() {
     <UserProvider>
       <Routes>   
       </Routes>
+      <Loading/>
         <Navbar/>
         <Message/>
         <Container>

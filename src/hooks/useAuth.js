@@ -4,6 +4,7 @@ import useFlashMessage from './useFlashMessage'
 
 import {useState, useEffect} from 'react'
 import {useNavigate } from 'react-router-dom'
+import useLoading from './useLoading'
 
 export default function useAuth(){
 
@@ -11,6 +12,7 @@ export default function useAuth(){
 
     const [authenticated, setAuthenticated] = useState(false)
     const {setFlashMessage} = useFlashMessage()
+    const {setLoading} = useLoading()
     const navigate  = useNavigate ()
 
     // verify has token to autecate
@@ -24,16 +26,20 @@ export default function useAuth(){
         }, [])
 
     async function register(user){
+        setLoading(true)
         let msgText = 'Cadastro realizado com sucesso!'
         let msgType = 'success'
 
         try {
             const data = await api.post('/users/register', user).then((response) => {
+                setLoading(false)
+
                 return response.data
             })
             await authUser(data)
     
         }catch(error){
+                setLoading(false)
                msgText = error.response.data.message
                msgType = 'error'
 
@@ -43,16 +49,19 @@ export default function useAuth(){
 
 
     async function login(user){
+        setLoading(true)
         let msgText = 'Login realizado com sucesso'
         let msgType = 'success'
 
         try {
             const data = await api.post('/users/login', user).then((response) => {
+                setLoading(false)
                 return response.data
             })
 
             await authUser(data)
         }catch(error){
+            setLoading(false)
             msgText = error.response.data.message
             msgType = 'error'
         }

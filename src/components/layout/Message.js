@@ -23,7 +23,7 @@ function Message(){
 
     return (
         visibility && (
-                <div style={{zIndex: '1000'}} className={`rounded-4 position-absolute w-50 start-50 translate-middle ${styles.message} ${styles[type]}`}>
+                <div style={{zIndex: '1000'}} className={`rounded-4 position-absolute w-100 start-50 translate-middle ${styles.message} ${styles[type]}`}>
                     {message}
                 </div>
         )

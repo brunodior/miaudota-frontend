@@ -14,27 +14,30 @@ import logo from '../../assets/img/logoMiuadota.png'
 function Navbar(){
 
     const [user, setUser] = useState({})
-    const [token] = useState(localStorage.getItem('token') || '')
-
-    
-
-    useEffect(() => {
-        { token && 
-            api.get('/users/checkuser', {
-                headers: {
-                    Authorization: `Baerer ${JSON.parse(token)}`,
-                }
-            }).then((response) => {
-                setUser(response.data)
-                return
-            }).catch((err) => {
-                return err
-            })
-        }
-        
-    }, [token])
+    const [token, setToken] = useState(localStorage.getItem('token') || '')
 
     const {authenticated, logout} = useContext(Context)
+
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+    
+        if (token) {
+           
+                api.get('/users/checkuser', {
+                    headers: {
+                        Authorization: `Bearer ${JSON.parse(token)}`,
+                    }
+                }).then((response) => {
+                    setUser(response.data);
+                }).catch((err) => {
+                    console.error(err);
+                }); 
+                
+        }
+    }, [authenticated, user]);
+    
+
 
     return(
        <nav className='bg-primary d-flex justify-content-between align-items-center px-4 px-md-5 py-3'>
@@ -54,8 +57,17 @@ function Navbar(){
                                 
                                 <li className="nav-item px-1 my-3">
                                     <Link to='/user/profile' className="btn btn-secondary d-flex rounded-5 align-items-center"> 
-                                        
-                                        <img className={styles.img_user} src={`${process.env.REACT_APP_API}/images/users/${user.image}`}/>  
+                                        {user.image ?
+                                        (
+                                        <>
+                                            <img className={styles.img_user} src={user.image}/>  
+                                        </>
+                                        ) :
+                                        (
+                                            <img className={styles.img_user} src='https://jeffjbutler.com//wp-content/uploads/2018/01/default-user.png'/>  
+
+                                        )
+                                        }
                                         <h5 className="m-0 ms-2">{user.name}</h5>
                                     </Link>
                                 </li>
@@ -106,7 +118,7 @@ function Navbar(){
                         <li className="nav-item px-1 mt-1"><NavLink className='nav-link h6' to="/pet/myadoptions">Minhas adoções</NavLink></li>
                         <li className="nav-item px-1 mt-1"><NavLink className='nav-link h6' to="/pet/mypets">Meus pets</NavLink></li>
                         <li className="nav-item nav-link cursor-pointer px-1 h6 mt-1 d-flex align-items-center" onClick={logout}> <i className="material-icons d-flex fs-5 me-2">logout</i> Sair</li>
-                        <li className="nav-item px-1"><Link to='/user/profile'> <img className={styles.img_user} src={`${process.env.REACT_APP_API}/images/users/${user.image}`}/>  </Link></li>
+                        <li className="nav-item px-1"><Link to='/user/profile'> <img className={styles.img_user} src={user.image}/>  </Link></li>
                    </> 
                 
                 ) : 

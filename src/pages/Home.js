@@ -31,7 +31,7 @@ function Home(){
                     pets.map((pet) => (
                         <div className="col-12 col-md-3 align-self-stretch">
                             <div className="border border-2 rounded-4  overflow-hidden h-100">
-                                    <div style={{backgroundImage: `url(${process.env.REACT_APP_API}/images/pets/${pet.images[0]})`}} className={styles.pet_card_image}> </div>
+                                    <div style={{backgroundImage: `url(${pet.images[0]})`}} className={styles.pet_card_image}> </div>
 
                                     <div className="p-3">
                                         <h4 className="m-0 text-primary fw-bold">{pet.name}</h4>
@@ -62,7 +62,16 @@ function Home(){
                    
                 )}
                 {pets.length === 0 && (
-                    <p>Não há pets cadastrados ou disponíbeis para adoção no momento</p>
+                        (
+                            <div className='w-100 h-100 bg-light bg-opacity-25 p-4 rounded-4 d-flex flex-column align-items-center'>
+                                <i class="material-icons-outlined d-flex text-light" style={{fontSize: '100px'}}>
+                                    sentiment_dissatisfied
+                                </i>
+                                <h6 className='text-light m-0 mt-2 fw-normal text-center'>Não há pets cadastrados ou disponíbeis para adoção no momento</h6>
+                                
+                            </div>
+
+                    )
                 )}
 
             </div>

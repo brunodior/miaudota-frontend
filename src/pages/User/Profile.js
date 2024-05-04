@@ -5,6 +5,9 @@ import Input from '../../components/form/Input'
 import { useEffect, useState } from 'react'
 import useFlashMessage from '../../hooks/useFlashMessage'
 import RoundedImage from '../../components/layout/RoundedImage'
+import useLoading from '../../hooks/useLoading'
+import Loading from '../../components/layout/Loading'
+
 
 function Profile(){
 
@@ -12,6 +15,7 @@ function Profile(){
     const [preview, setPreview] = useState()
     const [token] = useState(localStorage.getItem('token') || '')
     const {setFlashMessage} = useFlashMessage()
+    const {setLoading} = useLoading()
 
     useEffect(() => {
         api.get('/users/checkuser', {
@@ -35,6 +39,8 @@ function Profile(){
 
 
     async function handleSubmit(e){
+
+        setLoading(true)
         e.preventDefault()
 
         let msgType = 'success'
@@ -50,27 +56,45 @@ function Profile(){
             'Content-Type': 'multipart/form-data'
         }
     }).then((response) => {
+        setLoading(false)
         return response.data
 
+
     }).catch((err) => {
+        setLoading(false)
         msgType = 'error'
         return err.response.data
     })
+
         setFlashMessage(data.message, msgType)
     }
 
     return(
         <section className='p-4 p-md-5'>                
-
             <form onSubmit={handleSubmit} className='row'>
                     <div className='col-md-2'>
-                        <div className='d-flex justify-content-center' >
-                            {(user.image || preview) && (
-                                <RoundedImage 
-                                        src={preview ? URL.createObjectURL(preview) : `${process.env.REACT_APP_API}/images/users/${user.image}`
+                        <div className='d-flex justify-content-center mb-2' >
+                           
+                               
+                                {!user.image && !preview ? 
+                                    (
+                                        <RoundedImage 
+                                        src={`https://jeffjbutler.com//wp-content/uploads/2018/01/default-user.png`
                                         }
                                         alt={user.name} />
-                            )}
+                                    )
+                                    : (
+                                        <RoundedImage 
+                                        src={preview ? URL.createObjectURL(preview) : `${user.image}`
+                                        }
+                                        alt={user.name} />
+                                    )
+                                
+                                }
+                            
+                               
+                              
+                           
                         </div>
                         
                         <Input
@@ -126,7 +150,7 @@ function Profile(){
                             </div>
                             <div className='col-6'>
                                 <Input
-                                    text='Confirmação de senha'    
+                                    text='Confirme a senha'    
                                     type='password'
                                     name='confirmpassword'
                                     placeholder='Confirme a sua senha'

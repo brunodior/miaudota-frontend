@@ -7,29 +7,29 @@ import Select from "./Select"
 
 
 
+
 function PetForm({handleSubmit, petData, btnText}){
 
     const [pet, setPet] = useState(petData || {})
     const [preview, setPreview] = useState([])
     const colors = ["Branco", "Preto", "Cinza", "Caramelo", "Mesclado"]
-
     function onFileChange(e){
         setPreview(Array.from(e.target.files))
-        setPet({...pet, images: [...e.target.files]})
+        setPet({...pet, [e.target.name]: e.target.files[0]})
     }
+
 
     function handleChange(e){
         setPet({...pet, [e.target.name]: e.target.value})
-
     }
 
     function handleColor(e){
         setPet({...pet, color: e.target.options[e.target.selectedIndex].text})
     }
 
-    function submit(e){
+    async function submit(e){
         e.preventDefault()
-        handleSubmit(pet)
+       await handleSubmit(pet)
     }
 
     return(
@@ -40,10 +40,13 @@ function PetForm({handleSubmit, petData, btnText}){
                 ? preview.map((image, index) =>  
                     <img className={formStyles.img_pet} src={URL.createObjectURL(image)} alt={pet.name} key={`${pet.name}+${index}`} />
                 ) 
-                : pet.images && pet.images.map((image, index) => 
-                <img className={formStyles.img_pet} src={`${process.env.REACT_APP_API}/images/pets/${image}`} alt={pet.name} key={`${pet.name}+${index}`} />
-
-                )}
+                : 
+                (
+                    
+                    <img className={formStyles.img_pet} src={pet.images ? pet.images : 'https://jeffjbutler.com//wp-content/uploads/2018/01/default-user.png'} alt={pet.name} key={`${pet.name}`} />
+                )
+            }
+              
             </div>
             
 
@@ -52,8 +55,9 @@ function PetForm({handleSubmit, petData, btnText}){
                 type="file"
                 name="images"
                 handleOnChange={onFileChange} 
-                multiple={true}   
+                
             /> 
+            
 
             <Input
                 text="Nome do Pet"

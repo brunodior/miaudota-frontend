@@ -49,7 +49,7 @@ function PetDetails(){
                         {pet.images.map((image, index) => (
                             <img 
                                 className={styles.img_pet}
-                                src={`${process.env.REACT_APP_API}/images/pets/${image}`}
+                                src={pet.images}
                                 alt={pet.name}
                                 key={index}
                             />

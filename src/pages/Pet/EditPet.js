@@ -6,7 +6,8 @@ import PetForm from "../../components/form/PetForm"
 
 // hooks
 import useFlashMessage from "../../hooks/useFlashMessage"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
+import useLoading from "../../hooks/useLoading"
 
 
 
@@ -16,28 +17,26 @@ function EditPet(){
     const [token] = useState(localStorage.getItem('token') ||  '')
     const {id} = useParams()
     const {setFlashMessage} = useFlashMessage()
-
+    const {setLoading} = useLoading()
+    const navigate = useNavigate()
     useEffect(() => {
         api.get(`/pets/${id}`, {
            Authorization: `Bearer ${JSON.parse(token)}` 
         }).then((response) => {
             setPet(response.data.pet)
+           
         }, [token, id])
     })
 
     async function updatePet(pet){
+
+        setLoading(true)
         let msgType = 'success'
 
         const formData = new FormData()
 
         await Object.keys(pet).forEach((key) => {
-            if(key === 'images'){
-                for(let i = 0; i < pet[key].lenght; i++){
-                    formData.append('images', pet[key][i])
-                }
-            }else {
                 formData.append(key, pet[key])
-            }
         })
 
         const data = await api.patch(`pets/${pet._id}`, formData, {
@@ -46,8 +45,11 @@ function EditPet(){
                 'Content-Type': 'multipart/form-data'
             }
         }).then((response) => {
+            setLoading(false)
+            navigate('/pet/mypets')
             return response.data
         }).catch((err) => {
+            setLoading(false)
             msgType = 'error'
             return err.response.data
         })

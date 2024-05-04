@@ -6,36 +6,35 @@ import styles from './AddPet.module.css'
 // hooks
 import useFlashMessage from '../../hooks/useFlashMessage'
 import PetForm from '../../components/form/PetForm'
+import useLoading from '../../hooks/useLoading'
 
 
 function AddPet(){
 
     const [token] = useState(localStorage.getItem('token') || '')
     const {setFlashMessage} = useFlashMessage()
+    const {setLoading} = useLoading()
     const navigate = useNavigate()
 
     async function registerPet(pet){
         let msgType ='success'
-
+        setLoading(true)
         const formData = new FormData
         
         await Object.keys(pet).forEach((key) => {
-            if(key === 'images'){
-                for(let i=0; i< pet[key].length; i++){
-                    formData.append('images', pet[key][i])
-                }
-            }else {
                 formData.append(key, pet[key])
-            }
+            
         })
 
         const data = await api.post('/pets/create', formData, {
             Authorization: `Bearer ${JSON.parse(token)}`,
             'Content-type': 'multipart/form-data'
         }).then((response) => {
+            setLoading(false)
             return response.data
         })
         .catch((err)=> {
+            setLoading(false)
             msgType = 'error'
             return err.response.data
         })
@@ -50,7 +49,7 @@ function AddPet(){
     }
 
     return(
-        <section className='p-5'>
+        <section className='p-4 p-md-5'>
             <div className='d-flex flex-column align-items-center'>
                 <div className="mb-3 text-center">
                     <h1 className="m-0 text-primary fw-bold">Cadastre um pet</h1>

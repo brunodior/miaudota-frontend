@@ -3,8 +3,8 @@ import { Link } from "react-router-dom"
 import RoundedImage from "../../components/layout/RoundedImage"
 import useFlashMessage from "../../hooks/useFlashMessage"
 import api from "../../utils/api"
+import useLoading from "../../hooks/useLoading"
 
-import styles from './Dashboard.module.css'
 
 
 function MyPets(){
@@ -12,6 +12,7 @@ function MyPets(){
 
     const [token] = useState(localStorage.getItem('token') || '')
     const {setFlashMessage} = useFlashMessage()
+    const {setLoading} = useLoading()
 
     useEffect(() => {
         api.get('/pets/mypets', {
@@ -25,6 +26,7 @@ function MyPets(){
 
     async function removePet(id){
         let msgType = 'success'
+        setLoading(true)
 
         const data = await api.delete(`/pets/${id}`, {
             headers: {
@@ -33,9 +35,11 @@ function MyPets(){
         }).then((response) => {
             const updatedPets = pets.filter((pet) => pet._id !== id)
             setPets(updatedPets)
+            setLoading(false)
             return response.data
         }
         ).catch((err) => {
+            setLoading(false)
             msgType = 'error'
             return err.response.data
         })
@@ -45,14 +49,16 @@ function MyPets(){
 
     async function concludeAdoption(id){
         let msgType = 'success'
-
+        setLoading(true)
         const data = await api.patch(`/pets/conclude/${id}`, {
             headers: {
                 Authorization: `Bearer ${JSON.parse(token)}`
             }
         }).then((response) => {
+            setLoading(false)
             return response.data
         }).catch((err) => {
+            setLoading(false)
             msgType ='error'
             return err.response.data
         })
@@ -79,7 +85,7 @@ function MyPets(){
 
                                         <div className="d-flex align-items-center">
                                                 <RoundedImage
-                                                    src={`${process.env.REACT_APP_API}/images/pets/${pet.images[0]}`}
+                                                    src={pet.images}
                                                     alt={pet.name}
                                                     width="px75"
                                                 />
